@@ -16,17 +16,18 @@ Include the Script:
 ```
 <script src="path/to/weatherWidget.js"></script>
 ```
-```
 2. Add a div where you want the weather widget to appear:
+```
 <div id="weatherDiv"></div>
 ```
-```
 3. Initialize the widget by adding this script to your HTML file:
+```
 <script>
     window.initializeWeatherWidget('weatherDiv');
 </script>
-
+```
 **If you don't want to specify a div, you can initialize the widget without a div ID, and it will create a new div in the body:
+```
 <script>
     window.initializeWeatherWidget();
 </script>
