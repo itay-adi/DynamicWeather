@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",          // Or "ES6"
+        "lib": ["ES2017", "DOM"],    // Include the necessary libraries
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist"           // Output directory for compiled files
+    },
+    "include": ["src"]
+}
