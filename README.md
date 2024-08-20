@@ -23,13 +23,13 @@ Include the Script:
 3. Initialize the widget by adding this script to your HTML file:
 ```
 <script>
-    window.initializeWeatherWidget('weatherDiv');
+    window.initializeWeatherWidget('weatherDiv')
 </script>
 ```
 **If you don't want to specify a div, you can initialize the widget without a div ID, and it will create a new div in the body:
 ```
 <script>
-    window.initializeWeatherWidget();
+    window.initializeWeatherWidget()
 </script>
 ```
 
