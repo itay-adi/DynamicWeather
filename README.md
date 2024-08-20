@@ -6,7 +6,7 @@ Include the Script:
 
 **Step 1: installation**
 ```
-1. Clone the repository git clone https://github.com/itay-adi/DynamicWeather.git
+1. Clone the repository by copy this line: git clone https://github.com/itay-adi/DynamicWeather.git
 2. npm install
 3. npm run build
 ```
