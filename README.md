@@ -5,22 +5,22 @@ The script is relaying on weatherapi.com APIs
 Include the Script:
 
 **Step 1: installation**
-1. Clone the repository 
-    git clone https://github.com/itay-adi/DynamicWeather.git
-
+```
+1. Clone the repository git clone https://github.com/itay-adi/DynamicWeather.git
 2. npm install
-
 3. npm run build
+```
 
 **Step 2: Include the Widget on Your Webpage**
 1. Add the following script tag in your HTML file, where the weatherWidget.js is the compiled output from the build process:
 ```
 <script src="path/to/weatherWidget.js"></script>
 ```
-
+```
 2. Add a div where you want the weather widget to appear:
 <div id="weatherDiv"></div>
-
+```
+```
 3. Initialize the widget by adding this script to your HTML file:
 <script>
     window.initializeWeatherWidget('weatherDiv');
@@ -30,9 +30,10 @@ Include the Script:
 <script>
     window.initializeWeatherWidget();
 </script>
+```
 
-Example HTML:
-
+**Example HTML:**
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,3 +51,4 @@ Example HTML:
     </script>
 </body>
 </html>
+```
