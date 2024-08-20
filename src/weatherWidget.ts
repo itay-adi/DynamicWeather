@@ -14,29 +14,33 @@ interface WeatherData {
     }
 }
 
-const apiKey = 'a2c162fe9e2b49b6b4c124102241808';
-const apiUrl = 'https://api.weatherapi.com/v1/forecast.json';
+const apiKey = 'a2c162fe9e2b49b6b4c124102241808'
+const apiUrl = 'https://api.weatherapi.com/v1/forecast.json'
 
 function createInputForm(divId?: string): void {
     const formDiv: HTMLElement | null = divId ? document.getElementById(divId) : createWeatherDiv()
 
     if (formDiv) {
-        const form: HTMLFormElement = createForm(divId)
+        const form: HTMLElement = createForm(divId)
 
         formDiv.appendChild(form)
     }
 }
 
 function createWeatherDiv(): HTMLElement {
-    const div: HTMLDivElement = document.createElement('div')
+    let weatherDiv = document.querySelector('.weatherDivContainer') as HTMLElement
+    
+    if (!weatherDiv) {
+        weatherDiv = document.createElement('div')
+        weatherDiv.classList.add('weatherDivContainer')
+        document.body.appendChild(weatherDiv)
+    }
 
-    document.body.appendChild(div)
-
-    return div
+    return weatherDiv
 }
 
-function createForm(divId?: string): HTMLFormElement {
-    const form: HTMLFormElement = document.createElement('form')
+function createForm(divId?: string): HTMLElement {
+    const form: HTMLElement = document.createElement('form')
 
     form.innerHTML = 
         `<label for="location">Enter City Name or Coordinates (lat,lon):</label>
@@ -80,25 +84,25 @@ function displayWeather(data: WeatherData, div: HTMLElement): void {
 
     removeWeatherResults(div) // Remove previous weatherResults div if it exists
 
-    const weatherDiv = document.createElement("div")
-    weatherDiv.setAttribute('id', 'weatherResults')
-    weatherDiv.innerHTML = `<h3>Average Temperatures for the Next 2 Weeks in ${data.location?.name}</h3>`
+    const weatherResultsDiv = document.createElement('div')
+    weatherResultsDiv.setAttribute('id', 'weatherResults')
+    weatherResultsDiv.innerHTML = `<h3>Average Temperatures for the Next 2 Weeks in ${data.location?.name}</h3>`
 
-    const days = document.createElement("div")
+    const days = document.createElement('div')
     days.setAttribute('id', 'resultsList')
 
     for (const [day, temp] of Object.entries(avgTemps)) {
-        const dayTemp = document.createElement("div")
+        const dayTemp = document.createElement('div')
         dayTemp.textContent = `${day}: ${temp.toFixed(2)}\u00B0C`
         days.appendChild(dayTemp)
     }
 
-    weatherDiv.appendChild(days)
-    div.appendChild(weatherDiv)
+    weatherResultsDiv.appendChild(days)
+    div.appendChild(weatherResultsDiv)
 }
 
 function removeWeatherResults(div: HTMLElement): void{
-    const previousWeatherResultsDiv: Element | null = div.querySelector("#weatherResults")
+    const previousWeatherResultsDiv: HTMLElement | null = div.querySelector("#weatherResults")
 
     if (previousWeatherResultsDiv) {
         previousWeatherResultsDiv.remove()
@@ -130,5 +134,5 @@ function getAverageTemperatures(data: WeatherData): Record<string, number> {
 }
 
 (window as any).initializeWeatherWidget = (divId?: string) => {
-    createInputForm(divId);
+    createInputForm(divId)
 }
